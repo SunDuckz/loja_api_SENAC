@@ -58,5 +58,10 @@
 
             return $NoticiaDAO->deleteNoticia($this);
         }
+        public function getNoticia() {
+            $NoticiaDAO = new NoticiaDAO();
+
+            return $NoticiaDAO->getNoticiaPorId($this);
+        }
     }
 ?>

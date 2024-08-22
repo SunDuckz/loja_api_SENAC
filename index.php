@@ -12,7 +12,3 @@
 
     echo $response;
 ?>
-
-
-
-

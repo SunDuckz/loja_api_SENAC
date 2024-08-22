@@ -12,24 +12,65 @@
                     '/autores' => [
                         'controller' => 'AutorController',
                         'function' => 'getAutores'
-                    ]
-            ],
+                    ],
+                    '/usuarios' => [
+                        'controller' => 'UsuarioController',
+                        'function' => 'getUsuarios'
+                    ],
+                ],
                 'POST' => [
                     '/criar-noticia' => [
                         'controller' => 'NoticiaController',
                         'function' => 'createNoticia'
+                    ],
+                    '/cadastrar-autor' => [
+                        'controller' => 'AutorController',
+                        'function' => 'createAutor'
+                    ],
+                    '/criar-usuario' => [
+                        'controller' => 'UsuarioController',
+                        'function' => 'createUsuario'
+                    ],
+                    '/noticia' => [
+                        'controller' => 'NoticiaController',
+                        'function' => 'getNoticiaPorId'
+                    ],
+                    '/autor' => [
+                        'controller' => 'AutorController',
+                        'function' => 'getAutorPorId'
+                    ],
+                    '/usuario' => [
+                        'controller' => 'UsuarioController',
+                        'function' => 'getUsuarioPorId'
                     ]
-                ],
+                    ],
                 'PUT' => [
                     '/atualizar-noticia'=> [
                         'controller' => 'NoticiaController',
                         'function' => 'updateNoticia'
+                    ],
+                    '/editar-autor' => [
+                        'controller' => 'AutorController',
+                        'function' => 'updateAutor'
+                    ],
+                    '/atualizar-usuario' => [
+                        'controller' => 'UsuarioController',
+                        'function' => 'updateUsuario'
                     ]
+                    
                     ],
                 'DELETE' => [
                     '/excluir-noticia' => [
                         'controller' => 'NoticiaController',
                         'function' => 'deleteNoticia'
+                    ],
+                    '/excluir-autor' => [
+                        'controller' => 'AutorController',
+                        'function' => 'deleteAutor'
+                    ],
+                    '/excluir-usuario' => [
+                        'controller' => 'UsuarioController',
+                        'function' => 'deleteUsuario'
                     ]
                 ]
             ];

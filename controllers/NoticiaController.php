@@ -4,11 +4,11 @@
         public function getNoticias() {
             $noticiaModel = new NoticiaModel();
 
-            $response = $noticiaModel->getNoticias();
+            $result = $noticiaModel->getNoticias();
 
             return json_encode([
                 'error' => null,
-                'result'=> $response
+                'result'=> $result
             ]);
         }
         public function createNoticia() {
@@ -31,11 +31,11 @@
             $dados['imagemNoticia']
             );
 
-            $response = $noticia->create();
+            $result = $noticia->create();
 
             return json_encode([
                 'error' => null,
-                'result' => $response
+                'result' => $result
             ]);
 
         }
@@ -63,11 +63,11 @@
                 $dados['imagemNoticia']
             );
 
-            $ressponse = $noticia->update();
+            $result = $noticia->update();
             
             return json_encode([
                 'error' => null,
-                'result' => $ressponse
+                'result' => $result
             ]);
         }
 
@@ -77,15 +77,30 @@
             if(empty($dados['idNoticia'])){
                 return $this->showError('Você deve informar o idNoticia');
             }
-            
                 $noticia = new NoticiaModel($dados['idNoticia']);
     
-                $response = $noticia->delete();
+                $result = $noticia->delete();
                 return json_encode([
                     'error' => null,
-                    'result' => $response
+                    'result' => $result
                 ]);           
 
+        }
+
+        public function getNoticiaPorId() {
+            $dados = json_decode(file_get_contents('php://input'),true);
+
+            if(empty($dados['idNoticia'])){
+                return $this->showError('Você deve informar o idNoticia');
+            }
+                $noticiaModel = new NoticiaModel($dados['idNoticia']);
+    
+                $result = $noticiaModel->getNoticia();
+    
+                return json_encode([
+                    'error' => null,
+                    'result'=> $result
+                ]);
         }
 
         private function showError(string $mensagem) {

@@ -42,7 +42,16 @@
                     '/usuario' => [
                         'controller' => 'UsuarioController',
                         'function' => 'getUsuarioPorId'
+                    ],
+                    '/validar-email' => [
+                        'controller' => 'UsuarioController',
+                        'function' => 'validateEmail'
+                    ],
+                    '/login' => [
+                        'controller' => 'UsuarioController',
+                        'function' => 'validateUsuario'
                     ]
+
                     ],
                 'PUT' => [
                     '/atualizar-noticia'=> [

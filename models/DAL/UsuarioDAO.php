@@ -61,6 +61,30 @@
 
             return $stmt->fetch(PDO::FETCH_ASSOC); 
         }
+        public function getUsuarioByEmail($email) {
+            $conexao = (new conexao)->getConnection();
+
+            $sql = "SELECT * FROM usuario WHERE emailUsuario = :email";
+
+            $stmt = $conexao->prepare($sql);
+            $stmt->bindParam(":email",$email);
+            $stmt->execute();
+
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        }
+        public function getUsuarioByEmailandSenha($email,$senha) {
+            $conexao = (new conexao())->getConnection();
+
+            $sql = "SELECT * FROM usuario WHERE emailUsuario = :email and senhaUsuario = :senha";
+
+            $stmt = $conexao->prepare($sql);
+            $stmt->bindParam(":email",$email);
+            $stmt->bindParam(":senha",$senha);
+
+            $stmt->execute();
+
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        }
     }
 
 ?>

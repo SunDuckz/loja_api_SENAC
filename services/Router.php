@@ -17,6 +17,10 @@
                         'controller' => 'UsuarioController',
                         'function' => 'getUsuarios'
                     ],
+                    '/tipos-usuario' => [
+                        'controller' => 'TipoUsuarioController',
+                        'function' => 'getTiposUsuario'
+                    ]
                 ],
                 'POST' => [
                     '/criar-noticia' => [
@@ -50,6 +54,10 @@
                     '/login' => [
                         'controller' => 'UsuarioController',
                         'function' => 'validateUsuario'
+                    ],
+                    '/tipo-usuario' => [
+                        'controller' => 'TipoUsuarioController',
+                        'function' => 'getTipoUsuario'
                     ]
 
                     ],
@@ -65,6 +73,10 @@
                     '/atualizar-usuario' => [
                         'controller' => 'UsuarioController',
                         'function' => 'updateUsuario'
+                    ],
+                    '/atualizar-tipo-usuario' => [
+                        'controller' => 'TipoUsuarioController',
+                        'function' => 'updateTipoUsuario'
                     ]
                     
                     ],
@@ -80,6 +92,10 @@
                     '/excluir-usuario' => [
                         'controller' => 'UsuarioController',
                         'function' => 'deleteUsuario'
+                    ],
+                    '/excluir-tipo-usuario' => [
+                        'controller' => 'TipoUsuarioController',
+                        'function' => 'deleteTipoUsuario'
                     ]
                 ]
             ];

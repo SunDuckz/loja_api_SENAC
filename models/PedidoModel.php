@@ -22,7 +22,7 @@
                 $pedidos = $pedidoDAO->getPedidos();
     
                 foreach ($pedidos as &$pedido) {
-                    $pedido = new ProdutoModel(
+                    $pedido = new PedidoModel(
                         $pedido['idPedido'],
                         $pedido['idUsuario'],
                         $pedido['idStatus'],
@@ -32,5 +32,34 @@
     
                 return $pedidos;
             }
+            public function getPedido($idPedido) {
+                $pedidoDAO = new PedidoDAO;
+
+                return $pedidoDAO->getPedidoById($idPedido);
+            }
+
+            public function getPedidoUsuario($idUsuario){
+                $pedidoDAO = new PedidoDAO();
+    
+                $pedidos = $pedidoDAO->getPedidoByIdUsuario($idUsuario);
+    
+                foreach ($pedidos as &$pedido) {
+                    $pedido = new PedidoModel(
+                        $pedido['idPedido'],
+                        $pedido['idUsuario'],
+                        $pedido['idStatus'],
+                    );
+    
+                }
+    
+                return $pedidos;
+            }
+
+            public function create() {
+                $pedidoDAO = new PedidoDAO;
+
+                return $pedidoDAO->createPedido($this);
+            }
         }
+
 ?>

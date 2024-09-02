@@ -34,6 +34,27 @@
 
             return $usuarios;
         }
-        public function getUsuarioById() {}
+        public function getUsuarioById() {
+            $usuarioDAO = new UsuarioDAO();
+
+            return $usuarioDAO->getUsuarioById($this);
+        }
+
+        public function create() {
+            $usuarioDAO = new UsuarioDAO;
+
+            return $usuarioDAO->createUsuario($this);
+        }
+
+        public function update() {
+            $usuarioDAO = new UsuarioDAO();
+
+            return $usuarioDAO->updateUsuario($this);
+        }
+        public function delete() {
+            $usuarioDAO = new UsuarioDAO();
+
+            return $usuarioDAO->deleteUsuario($this);
+        }
     }
 ?>

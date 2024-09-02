@@ -24,61 +24,61 @@
 
                 ],
                 'POST' => [
-                    "/usuario" => [ 
+                    "/usuario" => [ #completo
                         'controller' => 'UsuarioController',
                         'function' => 'getUsuarioById'
                     ],
-                    "/cadastrar-usuario" => [
+                    "/cadastrar-usuario" => [ #completo
                         'controller' => 'UsuarioController',
                         'function' => 'createUsuario'
                     ],
-                    "/status" => [
+                    "/stat" => [ #completo (até o momento)
                         'controller' => 'StatusController',
                         'function' => 'getStatusById'
                     ],
-                    "/produto" => [
+                    "/produto" => [ #completo
                         'controller' => 'ProdutoController',
                         'function' => 'getProdutoById'
                     ],
-                    "/cadastrar-produto" => [
+                    "/cadastrar-produto" => [ #completo
                         'controller' => 'ProdutoController',
                         'function' => 'createProduto'
                     ],
-                    "/itens-pedido" => [
+                    "/itens-pedido" => [ #completo
                         'controller' => "ItemPedidoController",
                         'function' => "getItemsPedidoById"
                     ],
-                    '/cadastrar-item-pedido' => [
+                    '/cadastrar-item-pedido' => [ #completo
                         'controller' => 'ItemPedidoController',
                         'function' => 'createItemPedido'
                     ],
-                    '/pedido' => [
+                    '/pedido' => [  #completo
                         'controller' => 'PedidoController',
                         'function' => 'getPedidoById'
                     ],
-                    '/pedidos-pessoa' => [
+                    '/pedidos-pessoa' => [ #completo
                         'controller' => 'PedidoController',
                         'function' => 'getPedidoByIdUsuario'
                     ],
-                    '/cadastrar-pedido' => [
+                    '/cadastrar-pedido' => [ #completo
                         'controller' => 'PedidoController',
                         'function' => 'createPedido'
                     ],
-                    '/valor-total-pedido' => [
-                        'controller' => 'PedidoController',
+                    '/valor-total-pedido' => [ #completo
+                        'controller' => 'ItemPedidoController',
                         'function' => 'getValorTotalFromPedidoById'
                     ]
                     ],
                 'PUT' => [
-                    '/editar-usuario' => [
+                    '/editar-usuario' => [ #completo
                         'controller' => 'UsuarioController',
                         'function' => 'updateUsuario'
                     ],
-                    '/editar-produto' => [
+                    '/editar-produto' => [ #completo
                         'controller' => 'ProdutoController',
                         'function' => 'updateProduto',
                     ],
-                    '/editar-item-pedido' => [
+                    '/editar-item-pedido' => [ #completo
                         'controller' => 'ItemPedidoController',
                         'function' => 'updateItemPedido'
                     ],
@@ -93,15 +93,15 @@
                    
                     ],
                 'DELETE' => [
-                    '/excluir-usuario' => [
+                    '/excluir-usuario' => [ #completo
                         'controller' => 'UsuarioController',
                         'function' => 'deleteUsuario'
                     ],
-                    '/excluir-produto' => [
+                    '/excluir-produto' => [ #completo
                         'controller' => 'ProdutoController',
                         'function' => 'deleteProduto'
                     ],
-                    '/excluir-item-pedido' => [
+                    '/excluir-item-pedido' => [ #completo
                         'controller' => 'ItemPedidoController',
                         'function' => 'deleteItemPedido'
                     ],
@@ -127,7 +127,7 @@
             $controller = $routeInfo['controller'];
             $function = $routeInfo['function'];
 
-            require_once __DIR__ . '/../controllers/' . $controller . '.php';
+            require_once __DIR__ . '/../controller/' . $controller . '.php';
 
             return (new $controller)->$function();
         }

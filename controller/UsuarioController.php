@@ -41,19 +41,67 @@
         }
 
         public function getUsuarioById() {
-            $dados = json_decode(file_get_contents("php://input"));
+            $dados = json_decode(file_get_contents("php://input"),true);
 
-            if(empty($dados['idUsuario'])){
+            if(empty($dados['idUsuario'])) {
                 return $this->showError('Você deve informar o idUsuario');
             }
             $usuarioModel = new UsuarioModel($dados['idUsuario']);
 
-            $result = $usuarioModel->getUsuarios();
+            $result = $usuarioModel->getUsuarioById();
 
             return json_encode([
                 'error' => null,
                 'result' => $result
             ]);
+        }
+
+        public function updateUsuario() {
+            $dados = json_decode(file_get_contents('php://input'),true);
+
+            if(empty($dados['idUsuario'])) {
+                return $this->showError('Você deve informar o idUsuario');
+            }
+            if(empty($dados['nomeUsuario'])){
+                return $this->showError('Você deve mostar o nomeUsuario');
+            }
+            if(empty($dados['cpfUsuario'])){
+                return $this->showError('Você deve informar o cpfUsuario');
+            }
+            if(empty($dados['senhaUsuario'])){
+                return $this->showError('Você deve mostar a senhaUsuario');
+            }
+
+            $usuario = new UsuarioModel (
+                $dados['idUsuario'],
+                $dados['nomeUsuario'],
+                $dados['cpfUsuario'],
+                md5($dados['senhaUsuario'])
+            );
+
+            $usuario->update();
+
+            return json_encode([
+                'error' => null,
+                'result' => true
+            ]);
+
+        }
+
+        public function deleteUsuario() {
+            $dados = json_decode(file_get_contents('php://input'),true);
+
+            if(empty($dados['idUsuario'])){
+                return $this->showError('Voce deve informar o idUsuario');
+            }
+                $usuario = new UsuarioModel($dados['idUsuario']);
+
+                $usuario->delete();
+
+                return json_encode([
+                    'error' => null,
+                    'result' => true
+                ]);
         }
         private function showError(string $mensagem) {
             return json_encode([

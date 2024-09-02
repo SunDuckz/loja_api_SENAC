@@ -9,7 +9,7 @@
         public function __construct(
             ?int $idProduto = null,
             ?string $descricaoProduto = null,
-            ?int $precoProduto = null,
+            ?float $precoProduto = null,
         ) {
             $this->idProduto = $idProduto;
             $this->descricaoProduto = $descricaoProduto;
@@ -31,6 +31,27 @@
             }
 
             return $produtos;
+        }
+
+        public function getProduto(){
+            $produtoDAO = new ProdutoDAO();
+
+            return $produtoDAO->getProdutoById($this);
+        }
+        public function create() {
+            $produtoDAO = new ProdutoDAO;
+
+            return $produtoDAO->createProduto($this);
+       }
+       public function update() {
+        $produtoDAO = new ProdutoDAO();
+
+        return $produtoDAO->updateProduto($this);
+        }
+         public function delete() {
+        $produtoDAO = new ProdutoDAO();
+
+        return $produtoDAO->deleteProduto($this);
         }
     }
 ?>

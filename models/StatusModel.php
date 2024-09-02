@@ -27,6 +27,12 @@
 
             return $status;
         }
+
+        public function getStatusById() {
+            $statusDAO = new StatusDAO;
+
+            return $statusDAO->getStatusById($this);
+        }
     }
 
 ?>

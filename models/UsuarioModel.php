@@ -56,5 +56,11 @@
 
             return $usuarioDAO->deleteUsuario($this);
         }
+
+        public function validarUsuario(string $cpf) {
+            $usuarioDAO = new UsuarioDAO();
+
+            return $usuarioDAO->getCpfUsuario($cpf);
+        }
     }
 ?>

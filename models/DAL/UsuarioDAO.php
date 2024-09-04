@@ -60,6 +60,16 @@
     
                 return $stmt->execute();
             }
+            public function getCpfUsuario(string $cpf) {
+                $conexao = (new conexao)->getConnection();
+
+                $sql = "SELECT count(cpfUsuario) as CPF From usuario WHERE cpfUsuario = :cpf";
+                $stmt = $conexao->prepare($sql);
+                $stmt->bindParam("cpf",$cpf);
+                $stmt->execute();
+                return $stmt->fetch(PDO::FETCH_ASSOC);
+
+            }
         }
         
 ?>

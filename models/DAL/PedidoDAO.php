@@ -47,7 +47,38 @@
                 return $stmt->execute();
             }
 
-
+            public function updatePedido(PedidoModel $pedido) {
+                $conexao = (new conexao())->getConnection();
+    
+                $sql = "UPDATE pedido SET idUsuario = :idUsuario WHERE idPedido = :id";
+    
+                $stmt = $conexao->prepare($sql);
+                $stmt->bindValue(":id",$pedido->idPedido);
+                $stmt->bindValue(":idUsuario",$pedido->idUsuario);
+    
+                return $stmt->execute();
+            }
+            public function deletePedido(PedidoModel $pedido) {
+                $conexao = (new conexao())->getConnection();
+    
+                $sql = "DELETE FROM pedido Where idPedido = :id";
+    
+                $stmt = $conexao->prepare($sql);
+                $stmt->bindValue(":id",$pedido->idPedido);
+    
+                return $stmt->execute();
+            }
+            public function updateStatusPedido(PedidoModel $pedido) {
+                $conexao = (new conexao())->getConnection();
+    
+                $sql = "UPDATE pedido SET idStatus = :idStatus WHERE idPedido = :id";
+    
+                $stmt = $conexao->prepare($sql);
+                $stmt->bindValue(":id",$pedido->idPedido);
+                $stmt->bindValue(":idStatus",$pedido->idStatus);
+    
+                return $stmt->execute();
+            }
         }
 
 ?>

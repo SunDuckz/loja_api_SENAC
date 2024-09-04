@@ -53,5 +53,10 @@
 
         return $produtoDAO->deleteProduto($this);
         }
+        public function validarProduto(string $descricao) {
+            $produtoDAO = new ProdutoDAO();
+
+            return $produtoDAO->getNomeProduto($descricao);
+        }
     }
 ?>

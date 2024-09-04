@@ -60,6 +60,21 @@
 
                 return $pedidoDAO->createPedido($this);
             }
+            public function update() {
+                $pedidoDAO = new PedidoDAO();
+    
+                return $pedidoDAO->updatePedido($this);
+            }
+            public function updateStatus() {
+                $pedidoDAO = new PedidoDAO();
+    
+                return $pedidoDAO->updateStatusPedido($this);
+            }
+            public function delete() {
+                $pedidoDAO = new PedidoDAO();
+    
+                return $pedidoDAO->deletePedido($this);
+            }
         }
 
 ?>

@@ -65,5 +65,15 @@
     
             return $itemPedidoDAO->deleteItemPedido($id_item_pedido);
             }
+        public function verificarSeProdutoJaEstaNoPedido(int $idPedido) {
+            $itemPedidoDAO = new ItemPedidoDAO();
+
+            return $itemPedidoDAO->verificarSeProdutoJaEstaNoPedido($idPedido);
+        }
+        public function updateQuantidade() {
+            $itemPedidoDAO = new ItemPedidoDAO();
+
+            return $itemPedidoDAO->updateQuantidade($this);
+        }
     }
 ?>

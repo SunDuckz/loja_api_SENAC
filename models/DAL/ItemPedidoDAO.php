@@ -61,6 +61,30 @@
 
             return $stmt->execute();
         }
+        public function updateQuantidade(itemPedidoModel $itemPedido) {
+            $conexao = (new conexao)->getConnection();
+
+            $sql = "UPDATE item_pedido SET quantidade = quantidade + :quantidade WHERE idPedido = :idPedido and idProduto = :idProduto";
+
+            $stmt = $conexao->prepare($sql);
+            $stmt->bindValue(":idPedido",$itemPedido->idPedido);
+            $stmt->bindValue(":idProduto",$itemPedido->idProduto);
+            $stmt->bindValue("quantidade",$itemPedido->quantidade);
+            return $stmt->execute();
+
+        }
+
+        public function verificarSeProdutoJaEstaNoPedido(int $idPedido) {
+            $conexao = (new conexao)->getConnection();
+
+            $sql = "SELECT count(idProduto) as Produto from item_pedido WHERE idPedido = :id";
+
+            $stmt = $conexao->prepare($sql);
+            $stmt->bindParam(":id",$idPedido);
+            $stmt->execute();
+
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        }
     }
 
 ?>

@@ -25,12 +25,18 @@
                 return $this->showError('Você deve mostar a senhaUsuario');
             }
 
+
             $usuario = new UsuarioModel (
                 null,
                 $dados['nomeUsuario'],
                 $dados['cpfUsuario'],
                 md5($dados['senhaUsuario'])
             );
+            $validação = $usuario->validarUsuario($dados['cpfUsuario']);
+
+            if ($validação['CPF'] >= 1) {
+                return $this->showError("já existe um usuario com este CPF");
+            }
 
             $usuario->create();
 
@@ -71,13 +77,20 @@
             if(empty($dados['senhaUsuario'])){
                 return $this->showError('Você deve mostar a senhaUsuario');
             }
-
+            
             $usuario = new UsuarioModel (
                 $dados['idUsuario'],
                 $dados['nomeUsuario'],
                 $dados['cpfUsuario'],
                 md5($dados['senhaUsuario'])
             );
+
+            $validacao = $usuario->validarUsuario($dados['cpfUsuario']);
+
+            if ($validacao['CPF'] >= 1) {
+                return $this->showError("já existe um usuario com este CPF");
+            }
+
 
             $usuario->update();
 
@@ -103,6 +116,7 @@
                     'result' => true
                 ]);
         }
+
         private function showError(string $mensagem) {
             return json_encode([
                 'error' => $mensagem,

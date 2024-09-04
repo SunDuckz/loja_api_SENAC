@@ -82,11 +82,11 @@
                         'controller' => 'ItemPedidoController',
                         'function' => 'updateItemPedido'
                     ],
-                    '/editar-pedido' => [
+                    '/editar-pedido' => [ #completo
                         'controller' => 'PedidoController',
                         'function' => 'updatePedido'
                     ],
-                    '/editar-status-pedido' => [
+                    '/editar-status-pedido' => [ #completo
                         'controller' => 'PedidoController',
                         'function' => 'updateStatusPedido'
                     ]
@@ -105,7 +105,7 @@
                         'controller' => 'ItemPedidoController',
                         'function' => 'deleteItemPedido'
                     ],
-                    '/excluir-pedido' => [
+                    '/excluir-pedido' => [ #completo
                         'controller' => 'PedidoController',
                         'function' => 'deletePedido'
                     ]

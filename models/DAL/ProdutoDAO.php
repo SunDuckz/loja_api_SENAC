@@ -54,6 +54,17 @@
 
             return $stmt->execute();
         }
+
+        public function getNomeProduto(string $descricaoProduto) {
+            $conexao = (new conexao)->getConnection();
+
+            $sql = "SELECT count(descricaoProduto) as descricao From produto WHERE descricaoProduto = :descricao";
+            $stmt = $conexao->prepare($sql);
+            $stmt->bindParam("descricao",$descricaoProduto);
+            $stmt->execute();
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+
+        }
     }
 
 ?>

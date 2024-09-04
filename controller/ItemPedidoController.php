@@ -16,8 +16,14 @@
             }
             $itemPedidoModel = new itemPedidoModel(null,$dados['idProduto'],$dados['idPedido'],$dados['quantidade']);
 
-            $result = $itemPedidoModel->create();
+            $verificacao = $itemPedidoModel->verificarSeProdutoJaEstaNoPedido($dados['idPedido']);
 
+            if ($verificacao['Produto'] >= 1) {
+                $result = $itemPedidoModel->updateQuantidade();
+            }
+            else {
+                $result = $itemPedidoModel->create();
+            }            
             return json_encode([
                 'error' => null,
                 'result' => $result

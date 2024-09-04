@@ -40,6 +40,13 @@
             }
             $produtoModel = new ProdutoModel(null,$dados['descricaoProduto'],floatval($dados['precoProduto']));
 
+            
+            $validacao = $produtoModel->validarProduto($dados['descricaoProduto']);
+
+            if ($validacao['descricao'] >= 1) {
+                return $this->showError("já existe um produto com esta descricaoProduto");
+            }
+
             $result = $produtoModel->create();
 
             return json_encode([
@@ -60,13 +67,19 @@
                 return $this->showError('Você deve informar o precoProduto');
             }
 
-            $usuario = new ProdutoModel (
+            $produto = new ProdutoModel (
                 $dados['idProduto'],
                 $dados['descricaoProduto'],
                 $dados['precoProduto'],
             );
 
-            $usuario->update();
+            $validacao = $produto->validarProduto($dados['descricaoProduto']);
+
+            if ($validacao['descricao'] >= 1) {
+                return $this->showError("já existe um produto com esta descricaoProduto");
+            }
+
+            $produto->update();
 
             return json_encode([
                 'error' => null,
